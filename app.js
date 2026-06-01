@@ -18,6 +18,7 @@ const peliculaPorAgregar = () => {
         contadorPeliculas++
         let tarjeta = document.createElement('div')
         tarjeta.classList.add('tarjetita')
+        tarjeta.setAttribute('id', contadorPeliculas)
 
         let nombrePelicula = document.createElement('p')
         nombrePelicula.classList.add('nombrePelicula')
@@ -29,12 +30,12 @@ const peliculaPorAgregar = () => {
 
         let botonVotos = document.createElement('button')
         botonVotos.classList.add('boton-votos')
-        botonVotos.textContent = 'Votar'
+        botonVotos.textContent = 'Vote'
 
 
         let botonEliminar = document.createElement('button')
         botonEliminar.classList.add('boton-eliminar')
-        botonEliminar.textContent = 'Eliminar'
+        botonEliminar.textContent = 'Delete'
 
         tarjeta.appendChild(nombrePelicula)
         tarjeta.appendChild(cantidadVotos)
@@ -68,7 +69,7 @@ const peliculaPorAgregar = () => {
             //Creo el objeto. El objeto contiene el nombre de la movie, la cantidad de votos y un id que me ayuda
             //(en teoria) a buscar su posicion dentro del arreglo para poder eliminarlo dado el caso
 
-            datosFilm = {
+            let datosFilm = {
                 nombre: nombrePelicula.textContent,
                 votos: cantidadVotos.textContent[cantidadVotos.textContent.length - 1],
                 id: contadorPeliculas
@@ -109,11 +110,19 @@ const peliculaPorAgregar = () => {
         //solo falta que se elimine de manera interna. PERO COMO PTM?????????????????????
         botonEliminar.addEventListener('click', (event) => {
             tarjeta.remove()
+
+            //Se me ocurre hacer aqui un for each de peliculas. buscar en cada objeto el id. Si coicide con el event target id, se elimina.
+            //JS me tira error. Dice que el objeto no puede ser tratado como arreglo. PERO ESTOY ENTRANDO AL ARREGLO CTM!!!!!!!!!!
+
+
+            //Para devolver a la normalidad a el top 1 film
             contadorTarjetas--
             if (contadorTarjetas == 0) {
                 cuandoNoHayPeliclas.classList.remove('d-none')
+                lugardelTopFilm.textContent = 'The #1 Film is: None'
             }
         })
+
         //se reinician los votos para que cada tarjetica tenga los suyos propios
         contador = 0
 
