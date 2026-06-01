@@ -4,6 +4,8 @@ let input = document.querySelector('.ingreso')
 let contadorPeliculas = 0
 let peliculas = []
 let cuandoNoHayPeliclas = document.querySelector('.cuandoNoHayPeliculas')
+let savedVotes = 0
+
 
 
 
@@ -42,7 +44,6 @@ const peliculaPorAgregar = () => {
 
     input.value = ''
     let contador = 0
-    let savedVotes = 0
 
     if (peliculas.length >= 0) {
         cuandoNoHayPeliclas.classList.add('d-none')
@@ -53,6 +54,7 @@ const peliculaPorAgregar = () => {
 
     botonVotos.addEventListener('click', (event) => {
         contador++
+        
         cantidadVotos.textContent = 'Cantidad de votos: ' + contador
         console.log(contador)
         savedVotes = contador
@@ -74,6 +76,7 @@ const peliculaPorAgregar = () => {
     peliculas.push(datosFilm)
     console.log(peliculas)
 
+    contador = 0
 
 
 }
