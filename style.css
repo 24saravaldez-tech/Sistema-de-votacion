@@ -2,13 +2,20 @@
     font-size: 62.5%;
     margin: 0;
     box-sizing: border-box;
+
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, rgb(20, 20, 145), black);
+    color: white;
 }
 
 .encabezado {
     text-align: center;
     padding: 2rem 0rem;
-    font-size: 8rem;
-    border-bottom: 0.1rem solid black;
+    font-size: 10rem;
 }
 
 .contenedor1 {
@@ -17,7 +24,6 @@
     justify-content: center;
     padding: 2rem;
     font-size: 4rem;
-    border-bottom: 0.1rem solid black;
 }
 
 .contenedor-cartas {
@@ -79,8 +85,10 @@
     align-items: center;
     justify-content: center;
     font-size: 8rem;
-    margin: 3rem 0;
     border-bottom: 0.1rem solid black;
+    background: linear-gradient(to bottom, rgb(73, 0, 73), black);
+    padding: 3rem 0;
+
 }
 
 .cuandoNoHayPeliculas {
@@ -92,6 +100,20 @@
     border-bottom: 0.1rem solid black;
 }
 
-.d-none{
+.d-none {
     display: none;
+}
+
+.ingreso {
+    height: 5rem;
+    width: 60rem;
+    font-size: 3rem;
+}
+
+.botonAgregar {
+    height: 5rem;
+    width: 20rem;
+    font-size: 3rem;
+    background-color: rgb(40, 40, 193);
+    color: white;
 }

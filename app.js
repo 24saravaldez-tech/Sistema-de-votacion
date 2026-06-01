@@ -10,6 +10,7 @@ let savedVotes = 0
 
 
 
+
 const peliculaPorAgregar = () => {
     contadorPeliculas++
     let tarjeta = document.createElement('div')
