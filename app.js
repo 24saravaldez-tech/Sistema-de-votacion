@@ -58,15 +58,17 @@ const peliculaPorAgregar = () => {
             nombre: nombrePelicula.textContent,
             votos: cantidadVotos.textContent[cantidadVotos.textContent.length - 1],
         }
-        peliculas.push(datosFilm)
 
-        console.log(peliculas)
+    //    if (!peliculas.includes(nombrePelicula.textContent)) {
+            peliculas.push(datosFilm);
+  //          console.log(peliculas)
+  //      }
 
         peliculas.forEach((elemento) => {
             for (let i = 0; i < peliculas.length; i++) {
                 if (i == 0) {
-                    topFilm = peliculas[i].nombre
-                    mayor = peliculas[i].votos
+                    topFilm = peliculas[0].nombre
+                    mayor = peliculas[0].votos
                     lugardelTopFilm.textContent = 'The #1 Film is: ' + topFilm
                 } else {
                     if (peliculas[i].votos > mayor && peliculas[i].nombre != topFilm) {

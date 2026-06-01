@@ -8,7 +8,7 @@
 html {
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(to bottom, rgb(20, 20, 145), black);
+    background: linear-gradient(to bottom, rgb(88, 14, 119), black);
     color: white;
 }
 
@@ -16,7 +16,6 @@ html {
     text-align: center;
     padding: 2rem 0rem;
     font-size: 10rem;
-    background-color: black;
 }
 
 .contenedor1 {
@@ -86,8 +85,7 @@ html {
     align-items: center;
     justify-content: center;
     font-size: 8rem;
-    border-bottom: 0.1rem solid black;
-    background: linear-gradient(to bottom, rgb(73, 0, 73), black);
+    background: linear-gradient(to bottom, rgb(187, 124, 208), black);
     padding: 3rem 0;
 
 }
@@ -98,7 +96,6 @@ html {
     justify-content: center;
     font-size: 8rem;
     margin: 3rem 0;
-    border-bottom: 0.1rem solid black;
 }
 
 .d-none {
@@ -115,6 +112,6 @@ html {
     height: 5rem;
     width: 20rem;
     font-size: 3rem;
-    background-color: rgb(40, 40, 193);
+    background-color: rgb(43, 4, 56);
     color: white;
 }
