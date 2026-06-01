@@ -6,7 +6,8 @@ let peliculas = []
 let cuandoNoHayPeliclas = document.querySelector('.cuandoNoHayPeliculas')
 let savedVotes = 0
 
-
+let topFilm = ''
+let mayor = 0
 
 
 
@@ -52,15 +53,40 @@ const peliculaPorAgregar = () => {
         cuandoNoHayPeliclas.classList.remove('d-none')
     }
 
-
     botonVotos.addEventListener('click', (event) => {
         contador++
-        
         cantidadVotos.textContent = 'Cantidad de votos: ' + contador
-        console.log(contador)
-        savedVotes = contador
-        console.log(savedVotes)
+
+        let datosFilm = {
+            nombre: nombrePelicula.textContent,
+            votos: cantidadVotos.textContent[cantidadVotos.textContent.length - 1],
+            id: contadorPeliculas
+        }
+
+        // peliculas = []
+        peliculas.push(datosFilm)
+
+        console.log(peliculas)
+
+        peliculas.forEach((elemento) => {
+            //console.log('yo soy el primer eleento de pas', elemento.votos)
+            for (let i = 0; i < peliculas.length; i++) {
+                if (i == 0) {
+                    topFilm = peliculas[i].nombre
+                    mayor = peliculas[i].votos
+                } else {
+                    if (peliculas[i].votos > mayor && peliculas[i].nombre != topFilm) {
+                        topFilm = peliculas[i].nombre
+                        mayor = peliculas[i].votos
+                        console.log('yo sere el top film escogido', topFilm, mayor)
+                    }
+                }
+
+            }
+        })
+
     })
+
 
 
 
@@ -68,15 +94,7 @@ const peliculaPorAgregar = () => {
         tarjeta.remove()
     })
 
-    let datosFilm = {
-        nombre: nombrePelicula.textContent,
-        cantidadVotos: savedVotes,
-        id: contadorPeliculas
-    }
-
-    peliculas.push(datosFilm)
     console.log(peliculas)
-
     contador = 0
 
 
@@ -85,3 +103,16 @@ const peliculaPorAgregar = () => {
 botonAgregar.addEventListener('click', () => {
     peliculaPorAgregar()
 })
+
+
+
+
+// // for(let i = 0; i < peliculas.length; i++){
+// //     if(i == 0){
+//         topFilm = peliculas[0].nombre
+//         mayor = peliculas[0].votos
+
+//         console.log(topFilm)
+//         console.log(mayor)
+// //     }
+// // }
