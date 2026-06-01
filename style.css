@@ -1,0 +1,97 @@
+* {
+    font-size: 62.5%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.encabezado {
+    text-align: center;
+    padding: 2rem 0rem;
+    font-size: 8rem;
+    border-bottom: 0.1rem solid black;
+}
+
+.contenedor1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-size: 4rem;
+    border-bottom: 0.1rem solid black;
+}
+
+.contenedor-cartas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjetita {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    padding: 5rem;
+    background-color: lightblue;
+    margin: 3rem;
+    width: 40rem;
+    height: 40rem;
+}
+
+.nombrePelicula {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 1rem 0;
+    font-weight: bold;
+    font-size: 5.5rem;
+}
+
+.boton-votos {
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem 0;
+    background-color: green;
+    color: white;
+    width: 15rem;
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.boton-eliminar {
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem 0;
+    background-color: red;
+    color: white;
+    width: 15rem;
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.cantidadVotos {
+    padding: 1rem 0;
+}
+
+.containerTopFilm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    margin: 3rem 0;
+    border-bottom: 0.1rem solid black;
+}
+
+.cuandoNoHayPeliculas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    margin: 3rem 0;
+    border-bottom: 0.1rem solid black;
+}
+
+.d-none{
+    display: none;
+}
