@@ -5,7 +5,7 @@ let peliculas = []
 let cuandoNoHayPeliclas = document.querySelector('.cuandoNoHayPeliculas')
 let savedVotes = 0
 let lugardelTopFilm = document.querySelector('#topFilm')
-
+let contadorPeliculas = 0
 let topFilm = ''
 let mayor = 0
 
@@ -13,89 +13,110 @@ let mayor = 0
 
 
 const peliculaPorAgregar = () => {
-    let tarjeta = document.createElement('div')
-    tarjeta.classList.add('tarjetita')
 
-    let nombrePelicula = document.createElement('p')
-    nombrePelicula.classList.add('nombrePelicula')
-    nombrePelicula.textContent = input.value
+    //se encerro dentro de un if para que cuando no haya nada en el input, simplemente no permita a;adir nada de nda
+    if (input.value.length > 0) {
+        contadorPeliculas++
+        let tarjeta = document.createElement('div')
+        tarjeta.classList.add('tarjetita')
 
-    let cantidadVotos = document.createElement('p')
-    cantidadVotos.classList.add('cantidadVotos')
-    cantidadVotos.textContent = 'Cantidad de votos: 0'
+        let nombrePelicula = document.createElement('p')
+        nombrePelicula.classList.add('nombrePelicula')
+        nombrePelicula.textContent = input.value
 
-    let botonVotos = document.createElement('button')
-    botonVotos.classList.add('boton-votos')
-    botonVotos.textContent = 'Votar'
+        let cantidadVotos = document.createElement('p')
+        cantidadVotos.classList.add('cantidadVotos')
+        cantidadVotos.textContent = 'Cantidad de votos: 0'
 
-
-    let botonEliminar = document.createElement('button')
-    botonEliminar.classList.add('boton-eliminar')
-    botonEliminar.textContent = 'Eliminar'
-
-    tarjeta.appendChild(nombrePelicula)
-    tarjeta.appendChild(cantidadVotos)
-    tarjeta.appendChild(botonVotos)
-    tarjeta.appendChild(botonEliminar)
-
-    contenedorCartas.append(tarjeta)
+        let botonVotos = document.createElement('button')
+        botonVotos.classList.add('boton-votos')
+        botonVotos.textContent = 'Votar'
 
 
-    input.value = ''
-    let contador = 0
+        let botonEliminar = document.createElement('button')
+        botonEliminar.classList.add('boton-eliminar')
+        botonEliminar.textContent = 'Eliminar'
 
-    if (peliculas.length >= 0) {
-        cuandoNoHayPeliclas.classList.add('d-none')
-    } else {
-        cuandoNoHayPeliclas.classList.remove('d-none')
-    }
+        tarjeta.appendChild(nombrePelicula)
+        tarjeta.appendChild(cantidadVotos)
+        tarjeta.appendChild(botonVotos)
+        tarjeta.appendChild(botonEliminar)
 
-    botonVotos.addEventListener('click', (event) => {
-        contador++
-        cantidadVotos.textContent = 'Cantidad de votos: ' + contador
+        contenedorCartas.append(tarjeta)
 
-        let datosFilm = {
-            nombre: nombrePelicula.textContent,
-            votos: cantidadVotos.textContent[cantidadVotos.textContent.length - 1],
+        //no toques esto de arriba. ya esta.
+
+        input.value = ''
+        let contador = 0
+        //Esto limpia y reinicia
+
+
+        //Este if determina si hay peliculas. de no haberlas, muestra el mensaje
+        if (peliculas.length >= 0) {
+            cuandoNoHayPeliclas.classList.add('d-none')
+        } else {
+            cuandoNoHayPeliclas.classList.remove('d-none')
         }
 
-    //    if (!peliculas.includes(nombrePelicula.textContent)) {
-            peliculas.push(datosFilm);
-  //          console.log(peliculas)
-  //      }
+        //Aqui esta la porqueria que da problema: 
+        //dentro del boton de eventos se busca hacer todo, 
+        botonVotos.addEventListener('click', (event) => {
+            //Aumento el contador de votos.
+            contador++
+            cantidadVotos.textContent = 'Cantidad de votos: ' + contador
 
-        peliculas.forEach((elemento) => {
+            //Creo el objeto. El objeto contiene el nombre de la movie, la cantidad de votos y un id que me ayuda
+            //(en teoria) a buscar su posicion dentro del arreglo para poder eliminarlo dado el caso
+
+            datosFilm = {
+                nombre: nombrePelicula.textContent,
+                votos: cantidadVotos.textContent[cantidadVotos.textContent.length - 1],
+                id: contadorPeliculas
+            }
+
+            //a;ado el objeto al arreglo.
+            peliculas.push(datosFilm)
+
+
+            //Busco la pelicula con mayor cantidad de votos dentro de todo el arreglo
+            //de peliculas.El punto es que se actualice cada vez que el usuario ingresa un nuevo
+            //voto, para que el cambio sea 'en vivo'
+
             for (let i = 0; i < peliculas.length; i++) {
                 if (i == 0) {
                     topFilm = peliculas[0].nombre
                     mayor = peliculas[0].votos
                     lugardelTopFilm.textContent = 'The #1 Film is: ' + topFilm
                 } else {
-                    if (peliculas[i].votos > mayor && peliculas[i].nombre != topFilm) {
+                    if (peliculas[i].votos - 1 > mayor && peliculas[i].nombre != topFilm) {
                         topFilm = peliculas[i].nombre
                         mayor = peliculas[i].votos
                         lugardelTopFilm.textContent = 'The #1 Film is: ' + topFilm
 
+                    } else {
+                        topFilm = topFilm
+                        mayor = mayor
+                        lugardelTopFilm.textContent = 'The #1 Film is: ' + topFilm
                     }
                 }
 
             }
+
         })
 
-    })
 
+        //Si quieren eliminar algo, visualmente, esto lo hace.
+        //solo falta que se elimine de manera interna. PERO COMO CM?????????????????????
+        botonEliminar.addEventListener('click', (event) => {
+            tarjeta.remove()
+        })
+        //se reinician los votos para que cada tarjetica tenga los suyos propios
+        contador = 0
 
-
-    botonEliminar.addEventListener('click', (event) => {
-        tarjeta.remove()
-    })
-
-    console.log(peliculas)
-    contador = 0
-
-
+    }
 }
 
+//hace todo lo anterior
 botonAgregar.addEventListener('click', () => {
     peliculaPorAgregar()
 })
