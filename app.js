@@ -8,8 +8,7 @@ let lugardelTopFilm = document.querySelector('#topFilm')
 let contadorPeliculas = 0
 let topFilm = ''
 let mayor = 0
-
-
+let contadorTarjetas = 0
 
 
 const peliculaPorAgregar = () => {
@@ -43,7 +42,7 @@ const peliculaPorAgregar = () => {
         tarjeta.appendChild(botonEliminar)
 
         contenedorCartas.append(tarjeta)
-
+        contadorTarjetas++
         //no toques esto de arriba. ya esta.
 
         input.value = ''
@@ -61,6 +60,7 @@ const peliculaPorAgregar = () => {
         //Aqui esta la porqueria que da problema: 
         //dentro del boton de eventos se busca hacer todo, 
         botonVotos.addEventListener('click', (event) => {
+
             //Aumento el contador de votos.
             contador++
             cantidadVotos.textContent = 'Cantidad de votos: ' + contador
@@ -106,9 +106,13 @@ const peliculaPorAgregar = () => {
 
 
         //Si quieren eliminar algo, visualmente, esto lo hace.
-        //solo falta que se elimine de manera interna. PERO COMO CM?????????????????????
+        //solo falta que se elimine de manera interna. PERO COMO PTM?????????????????????
         botonEliminar.addEventListener('click', (event) => {
             tarjeta.remove()
+            contadorTarjetas--
+            if (contadorTarjetas == 0) {
+                cuandoNoHayPeliclas.classList.remove('d-none')
+            }
         })
         //se reinician los votos para que cada tarjetica tenga los suyos propios
         contador = 0
@@ -119,6 +123,6 @@ const peliculaPorAgregar = () => {
 //hace todo lo anterior
 botonAgregar.addEventListener('click', () => {
     peliculaPorAgregar()
-})
 
+})
 
